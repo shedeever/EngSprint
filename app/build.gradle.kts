@@ -1,6 +1,13 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("org.jetbrains.dokka") version "1.9.20"
+}
+
+apply(plugin = "org.jetbrains.dokka")
+
+tasks.dokkaHtml {
+    outputDirectory.set(file("$buildDir/dokkaHtml"))
 }
 
 android {
@@ -47,7 +54,7 @@ android {
 }
 
 dependencies {
-
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
